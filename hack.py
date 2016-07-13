@@ -37,7 +37,10 @@ def set_light(on):
 find_hue()
 
 capture_filter = 'tcp and dst port 80 and host ' + hue_ip_addr
-capture = pyshark.LiveCapture(interface='en0', only_summaries=True, bpf_filter=capture_filter)
+try:
+   capture = pyshark.LiveCapture(interface='en0', only_summaries=True, bpf_filter=capture_filter)
+except pyshark.capture.capture.TSharkCrashException:
+   capture = pyshark.LiveCapture(interface='wlan0', only_summaries=True, bpf_filter=capture_filter)
 
 for packet in capture.sniff_continuously():
    info = packet.info.split(' ')
