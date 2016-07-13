@@ -1,0 +1,7 @@
+futures==3.0.5
+Logbook==1.0.0
+lxml==3.6.0
+py==1.4.31
+pyshark==0.3.6.1
+requests==2.10.0
+trollius==1.0.4
